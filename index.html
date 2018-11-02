@@ -28,6 +28,13 @@
         height: 400px;
         text-align: center;
     }
+    .landing360{
+        background-image: url("assets/coloricons/landingicon.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 400px;
+        text-align: center;
+    }
     .landing3d{
         background-image: url("assets/coloricons/box.svg");
         background-repeat: no-repeat;
@@ -75,6 +82,10 @@
                   <div id="mixed" class="p-2 mr-1 text-center">
                     <img height="30" src="assets/coloricons/mixedrealityicon.svg">
                     <p class="naviconcus">Mixed</p>
+                  </div>
+                  <div id="360" class="p-2 mr-1 text-center">
+                    <img height="30" src="assets/coloricons/photo-camera.svg">
+                    <p class="naviconcus">360</p>
                   </div>
                   <div id="3d" class="p-2 mr-3 text-center">
                     <img height="30" width="50" src="assets/coloricons/3dviewericon.svg">
@@ -131,6 +142,13 @@
                 $('#navcus p').removeClass("selected");
                 $('#mixed p').addClass("selected");
             });
+            $('#360').click(function(){
+                mode="360";
+                router();
+                
+                $('#navcus p').removeClass("selected");
+                $('#360 p').addClass("selected");
+            });
             $('#3d').click(function(){
                 mode = "3d";
                 router();
@@ -149,6 +167,10 @@
                 controller(3);
             }else if(mode == "mixed" && page == "allosaurus"){
                 controller(4);
+            }else if(mode == "360" && page == "home"){
+                controller(5);
+            }else if(mode == "360" && page == "allosaurus"){
+                controller(6);
             }
         }
         
@@ -165,6 +187,12 @@
                     break;
                 case 4:
                     $('#viewarea').html("<div class='landing3d'><h4><a class='text-primary' href='ms-mixedreality:addModel?uri=assets/models/a318.glb'>Click here</a> to begin to download the 3D model of the Theropod - Allosaurus fragilis</h4></div>");
+                    break;
+                case 5:
+                    $('#viewarea').html("<div class='landing360'><h4>Select a dinosaur fossil to view 360 image model</h4></div>");
+                    break;
+                case 6:
+                    $('#viewarea').html("<iframe width='100%' height='100%' frameborder='0' allowFullScreen webkitallowfullscreen mozallowfullscreen src='assets/360/demo/app-files/index.html'</iframe>");
                     break;
             }
         }
